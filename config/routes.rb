@@ -55,5 +55,12 @@ Rails.application.routes.draw do
   #   end
 
     root 'welcome#index'
+    scope '/api' do
+      scope '/v1' do
+        scope 'report' do
+            post '/' => 'api#sort_params'
+        end
+      end
+    end
 
 end
