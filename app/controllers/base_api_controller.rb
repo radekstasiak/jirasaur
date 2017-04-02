@@ -4,6 +4,9 @@ class BaseApiController < ApplicationController
 
 
     def authenticate_token
+    	puts ("reach here")
+    	puts("token #{@token}")
+    	puts("SLACK_TOKEN #{ENV['SLACK_TOKEN']}")
     	if @token != ENV['SLACK_TOKEN']
     		render nothing: true, status: :unauthorized
     	end
@@ -12,5 +15,6 @@ class BaseApiController < ApplicationController
     def parse_request
     	@token = params[:token]
     end
+    
 
 end
