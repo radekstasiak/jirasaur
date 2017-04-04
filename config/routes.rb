@@ -58,7 +58,7 @@ Rails.application.routes.draw do
     scope '/api' do
       scope '/v1' do
         scope 'report' do
-            post '/' => 'api#sort_params'
+            post '/' => 'api#process_request'
         end
       end
     end
