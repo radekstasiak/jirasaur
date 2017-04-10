@@ -5,13 +5,12 @@ class TaskStatusTest < ActiveSupport::TestCase
   #   assert true
   # end
   def setup
-  	#@status = TaskStatus.new(name: "In progress")
+  	@status = TaskStatus.new(name: "In progress")
   end
 
 
   test "task status name should be valid" do
-  	#@status.name=""
-
-  	#assert_not @status.save
+  	@status.name=""
+    assert_not @status.valid?
   end
 end
