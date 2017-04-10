@@ -15,7 +15,7 @@ class TaskTest < ActiveSupport::TestCase
     assert_not @task.valid?
   end
 
-  test "task  name should be unique" do
+  test "task name should be unique" do
     @task.name=tasks(:jira).name
     assert_not  @task.valid?
 

@@ -37,9 +37,9 @@ class UserTest < ActiveSupport::TestCase
   	assert_not @user.valid?
   end
 
-  test "team id should be unique" do
+  test "team id should not be unique" do
     @user.team_id="X1"
-    assert_not @user.valid?
+    assert @user.valid?
   end
 
   test "team id should be not nil" do
