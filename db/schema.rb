@@ -11,10 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404212254) do
+ActiveRecord::Schema.define(version: 20170408164448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "task_statuses", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "task_types", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer  "task_type_id"
+    t.integer  "task_status_id"
+    t.string   "name",           null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "tasks", ["task_status_id"], name: "index_tasks_on_task_status_id", using: :btree
+  add_index "tasks", ["task_type_id"], name: "index_tasks_on_task_type_id", using: :btree
+
+  create_table "user_tasks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_tasks", ["task_id"], name: "index_user_tasks_on_task_id", using: :btree
+  add_index "user_tasks", ["user_id"], name: "index_user_tasks_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",  null: false

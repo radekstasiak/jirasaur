@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-
+	has_many :user_tasks
+	has_many :tasks, :through =>:user_tasks
+	
 	validates :team_id, presence: true, allow_nil: false, allow_blank:false, uniqueness: true
 	validates :team_domain, presence: true, allow_nil: false, allow_blank:false
 	validates :user_id, presence: true, allow_nil: false, allow_blank:false, uniqueness: true
