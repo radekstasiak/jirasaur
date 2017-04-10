@@ -10,9 +10,15 @@ class TaskTest < ActiveSupport::TestCase
   end
 
 
-  test "task  name should be valid" do
+  test "task  name should not be empty" do
   	@task.name=""
     assert_not @task.valid?
+  end
+
+  test "task  name should be unique" do
+    @task.name=tasks(:jira).name
+    assert_not  @task.valid?
+
   end
 
   test "task type id should be valid" do
@@ -20,7 +26,7 @@ class TaskTest < ActiveSupport::TestCase
     assert_not @task.valid?
   end
 
-    test "task status id should be valid" do
+  test "task status id should be valid" do
   	@task.task_status_id=nil
     assert_not @task.valid?
   end

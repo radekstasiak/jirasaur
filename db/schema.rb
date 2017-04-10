@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170408164448) do
+ActiveRecord::Schema.define(version: 20170410191013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,11 +22,15 @@ ActiveRecord::Schema.define(version: 20170408164448) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "task_statuses", ["name"], name: "index_task_statuses_on_name", unique: true, using: :btree
+
   create_table "task_types", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "task_types", ["name"], name: "index_task_types_on_name", unique: true, using: :btree
 
   create_table "tasks", force: :cascade do |t|
     t.integer  "task_type_id"
@@ -36,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170408164448) do
     t.datetime "updated_at",     null: false
   end
 
+  add_index "tasks", ["name"], name: "index_tasks_on_name", unique: true, using: :btree
   add_index "tasks", ["task_status_id"], name: "index_tasks_on_task_status_id", using: :btree
   add_index "tasks", ["task_type_id"], name: "index_tasks_on_task_type_id", using: :btree
 
