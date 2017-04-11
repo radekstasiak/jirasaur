@@ -11,8 +11,12 @@ It's a timetracking app intended to work along with Slack slash commands
 
 ## Installation
 * Deploy app to your server (i.e. heroku)
-* Make sure it runs
-* Add new slash command to your Slack team 
+* Run migrations 
+``` rake db:migrate```
+* Populate database
+``` rake db:seed ```
+* Make sure its running
+* Add new slash command to your Slack team
 
 ## Usage
 From you slack channel run </br>
