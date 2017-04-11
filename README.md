@@ -20,6 +20,9 @@ From you slack channel run </br>
 
 See wiki for a full example
 
-### Learn More
+## Learn More
  * Slack slash commands - https://api.slack.com/slash-commands
  * Heroku - https://www.heroku.com
+
+## License
+The app is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
